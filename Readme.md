@@ -1,5 +1,5 @@
-###Protractor Setup Guide
-This project demonstrates the basic protractor project setup with Jenkins CI and Allure Reports integration
+###Protractor-Cucumber-Allure Setup Guide
+This project demonstrates the basic protractor-cucumber framework project setup with Jenkins CI and Allure Reports integration
 
 ###Features
 * Crisp & Clear protractor folder structures
@@ -79,12 +79,12 @@ Following method takes screenshot on failure of each scenario
 Following configuration shows to call specific tags from feature files
 
 >     cucumberOpts: {
-      monochrome:true,
-      strict:true,
-      plugin: [ "pretty"],
-      require:['../StepDefinitions/*.js','../Support/*.js'],
-      tags:'@AddActiveTipScenario,@SearchActiveTipScenario'
-      }
+    monochrome: true,
+    strict: true,
+    plugin: ["pretty"],
+    require: ['../StepDefinitions/*.js', '../Support/*.js'],
+    tags: '@Regression,@ProtractorScenario,@AllureScenario'
+    }
 
 ####HTML Reports
 Default cucumber HTML reports are generated which can be customized according to specific needs
