@@ -1,0 +1,25 @@
+{
+  "name": "protractor-cucumber-allure-reports",
+  "version": "1.0.0",
+  "description": "To demostrate protractor cucumber tests with angular apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "protractor Config/config.js",
+    "start": "webdriver-manager start"
+  },
+  "author": "Ram Pasala",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "cucumber": "^1.0.0",
+    "protractor": "^3.3.0",
+    "protractor-cucumber-framework": "^0.5.0",
+    "webdriver-manager": "^10.0.2"
+  },
+  "devDependencies": {
+    "chai-as-promised": "^5.3.0",
+    "cucumber-html-report": "^0.3.0",
+    "cucumberjs-allure-reporter": "^1.0.0",
+    "eslint": "^2.11.1"
+  }
+}
