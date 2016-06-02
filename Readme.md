@@ -89,4 +89,4 @@ Following configuration shows to call specific tags from feature files
 ####HTML Reports
 Default cucumber HTML reports are generated which can be customized according to specific needs
 
-![reportscreen](reportscreen.png)
+![reportscreen](Images/cucumberReport.png?raw=true)
