@@ -1,6 +1,7 @@
 {
   "name": "protractor-cucumber-allure-reports",
   "version": "1.0.0",
+    "license": "MIT",
   "description": "To demostrate protractor cucumber tests with angular apps",
     "homepage": "https://github.com/igniteram/protractor-cucumber-allure",
   "keywords": [
