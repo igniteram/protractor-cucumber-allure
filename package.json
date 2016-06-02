@@ -1,18 +1,20 @@
 {
-  "name": "protractor-cucumber-allure-reports",
+  "name": "protractor-cucumber-allure",
   "version": "1.0.0",
     "license": "MIT",
   "description": "To demostrate protractor cucumber tests with angular apps",
     "homepage": "https://github.com/igniteram/protractor-cucumber-allure",
   "keywords": [
-    "angular",
-    "test",
-    "testing",
-    "webdriver",
-    "webdriverjs",
-    "selenium",
     "protractor",
-      "cucumber"
+    "cucumber",
+    "allure reports",
+    "angular",
+    "angularjs",
+    "testing",
+    "behaviour driven development",
+    "bdd",
+    "selenium",
+    "webdriverJS"
   ],
   "main": "index.js",
   "scripts": {
