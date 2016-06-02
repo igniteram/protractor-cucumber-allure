@@ -2,12 +2,23 @@
   "name": "protractor-cucumber-allure-reports",
   "version": "1.0.0",
   "description": "To demostrate protractor cucumber tests with angular apps",
+    "homepage": "https://github.com/igniteram/protractor-cucumber-allure",
+  "keywords": [
+    "angular",
+    "test",
+    "testing",
+    "webdriver",
+    "webdriverjs",
+    "selenium",
+    "protractor",
+      "cucumber"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "protractor Config/config.js",
     "start": "webdriver-manager start"
   },
-  "author": "Ram Pasala",
+  "author": "Ram Pasala <ram.pasala7@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "chai": "^3.5.0",
@@ -21,5 +32,9 @@
     "cucumber-html-report": "^0.3.0",
     "cucumberjs-allure-reporter": "^1.0.0",
     "eslint": "^2.11.1"
+  },
+    "repository": {
+    "type": "git",
+    "url": "git://github.com/angular/protractor.git"
   }
 }
