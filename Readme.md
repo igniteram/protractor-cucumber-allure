@@ -2,7 +2,7 @@
 This project demonstrates the basic protractor-cucumber framework project setup with Jenkins CI and Allure Reports integration
 
 ###Features
-* Crisp & Clear protractor folder structures
+* Crisp & Clear folder structures
 * Page Object design pattern implementation
 * DirectConnect capability for Chrome & Firefox browsers
 * Extensive hooks implemented for BeforeFeature, AfterFeature, AfterScenarios etc.
