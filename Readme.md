@@ -90,3 +90,18 @@ Following configuration shows to call specific tags from feature files
 Default cucumber HTML reports are generated which can be customized according to specific needs
 
 ![reportscreen](Images/cucumberReport.png?raw=true)
+
+####Allure Reports
+The reporter.js file in Support folder generates the target directory "Reports" in which the xml files are generated.For detail instructions on how it works, please refer the Allure-CucumberJS official repo : https://github.com/allure-framework/cucumberjs-allure-reporter
+
+How to setup Jenkins and Allure framework : http://wiki.qatools.ru/display/AL/Allure+Jenkins+Plugin
+>      var reporter = require('cucumberjs-allure-reporter');
+     reporter.config(
+     {
+    targetDir:'./Reports/'
+     }
+     );
+     module.exports = reporter;
+
+![reportscreen](Images/allureReport.png?raw=true)
+![reportscreen](Images/allureReportGraph.png?raw=true)
