@@ -52,7 +52,7 @@ This project demonstrates the basic protractor-cucumber framework project setup 
     this.searchTextBox= function (text) {
         $("input[name='q']").sendKeys(text);
     };
-    this.searchButton = $("button[name='btnG1']");
+    this.searchButton = $("button[name='btnG']");
     this.clearText= function () {
         $("input[name='q']").clear();
     };
