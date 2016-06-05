@@ -11,8 +11,6 @@ exports.config = {
     'version':
     (process.env.TEST_BROWSER_VERSION || 'ANY'),
   },
-   
-    maxSessions: 1,
     
   onPrepare: function () {
     browser.ignoreSynchronization = true;
