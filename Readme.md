@@ -105,3 +105,6 @@ How to setup Jenkins and Allure framework : http://wiki.qatools.ru/display/AL/Al
 
 ![reportscreen](Images/allureReport.png?raw=true)
 ![reportscreen](Images/allureReportGraph.png?raw=true)
+
+##Contributions
+For contributors who want to improve this repo by contributing some code, reporting bugs, issues or improving documentation - PR's are highly welcome, please maintain the coding style , folder structure , detailed description of documentation and bugs/issues with examples if possible.
