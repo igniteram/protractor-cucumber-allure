@@ -6,16 +6,18 @@ exports.config = {
 
   capabilities: {
     'browserName':
-    (process.env.TEST_BROWSER_NAME || 'firefox'),
+    (process.env.TEST_BROWSER_NAME || 'chrome'),
     'version':
     (process.env.TEST_BROWSER_VERSION || 'ANY'),
   },
     
   onPrepare: function () {
+     
     browser.ignoreSynchronization = true;
     browser.manage().window().maximize();
+   
   },
-
+    
   framework: 'custom',
   frameworkPath: require.resolve('protractor-cucumber-framework'),
 

@@ -1,12 +1,8 @@
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 
-var World = function World() {
-    "use strict";
-  chai.use(chaiAsPromised);
-  this.expect = chai.expect;
-  this.setDefaultTimeout(60 * 1000);
-  
-}
-
-module.exports = World;
+module.exports = {
+    expect : chai.expect,
+    setDefaultTimeout : 60 * 1000
+};

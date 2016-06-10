@@ -5,7 +5,7 @@ var World = require('../Support/world');
 var searchText = function () {
     'use strict';
     var search = new SearchPage();
-    this.setDefaultTimeout(60 * 1000);
+    World.setDefaultTimeout;
     this.When(/^I type "(.*?)"$/, function (text) {
         return search.searchTextBox(text);
     });

@@ -5,9 +5,9 @@ var World = require('../Support/world');
 var clearPage = function () {
     'use strict';
     var search = new SearchPage();
-    this.setDefaultTimeout(60 * 1000);
+    World.setDefaultTimeout;
     this.Then(/^I clear search textbox$/, function () {
-        
+         
         return search.clearText();
     });
 };
