@@ -7,6 +7,7 @@ This project demonstrates the basic protractor-cucumber framework project setup 
 * DirectConnect capability for Chrome & Firefox browsers
 * Extensive hooks implemented for BeforeFeature, AfterFeature, AfterScenarios etc.
 * Screenshots on failure feature scenarios
+* PosgreSQL database connection feature example
 * Support for cucumber-html-reports
 * Support for CI and Cucumber-Allure-Jenkins reports
 
@@ -85,6 +86,20 @@ Following configuration shows to call specific tags from feature files
     require: ['../StepDefinitions/*.js', '../Support/*.js'],
     tags: '@Regression,@ProtractorScenario,@AllureScenario'
     }
+
+####Database Connection
+PostgreSQL nodejs module has been integrated with this framework, database feature file eloborates the connection and how the query results are retrieved.
+
+>     var pg = require('pg');
+    var connectDB = function() {
+    var conString = "postgres://username:password@localhost:5432/database_name";
+    this.client = new pg.Client(conString);
+    this.client.connect(function(err){
+    if(err){
+            return console.error('could not connect to postgres', err);
+        }
+    });
+    };
 
 ####HTML Reports
 Default cucumber HTML reports are generated which can be customized according to specific needs

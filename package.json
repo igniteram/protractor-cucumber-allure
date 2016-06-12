@@ -14,7 +14,8 @@
     "behaviour driven development",
     "bdd",
     "selenium",
-    "webdriverJS"
+    "webdriverJS",
+    "posgreSQL"
   ],
   "main": "index.js",
   "scripts": {
