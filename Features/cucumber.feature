@@ -1,6 +1,6 @@
 Feature: To search cucumber in google
 
-    @Regression
+    @CucumberScenario
     Scenario: Cucumber Google
       Given I am on google page
       When I type "cucumber"
