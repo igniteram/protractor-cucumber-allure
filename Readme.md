@@ -23,11 +23,13 @@ This project demonstrates the basic protractor-cucumber framework project setup 
 ####Run Scripts
 * Clone the repository into a folder
 * Go inside the folder and run following command from terminal/command prompt
->  npm install 
+
+ >  npm install 
 
 * All the dependencies from package.json would be installed in node_modules folder.
 * Following command will launch the browser and run the scripts
->   npm test
+
+ >   npm test
 
 ####Writing Features
 >     Feature: To search allure reports in google
