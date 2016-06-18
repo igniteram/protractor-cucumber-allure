@@ -30,7 +30,7 @@ exports.config = {
         , strict: true
         , plugin: ["pretty"]
         , require: ['../StepDefinitions/*.js', '../Support/*.js']
-        , tags: '@Regression,@ProtractorScenario,@AllureScenario,@DatabaseTest'
+        , tags: '@Regression,@ProtractorScenario,@AllureScenario,~@DatabaseTest'
 
     }
 };
