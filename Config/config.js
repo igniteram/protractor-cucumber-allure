@@ -5,7 +5,7 @@ exports.config = {
     baseUrl: 'http://www.google.com',
 
     capabilities: {
-        'browserName': (process.env.TEST_BROWSER_NAME || 'chrome')
+        'browserName': (process.env.TEST_BROWSER_NAME || 'firefox')
         , 'version': (process.env.TEST_BROWSER_VERSION || 'ANY')
     , },
 
