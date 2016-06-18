@@ -5,7 +5,7 @@ exports.config = {
     baseUrl: 'http://www.google.com',
 
     capabilities: {
-        'browserName': (process.env.TEST_BROWSER_NAME || 'firefox')
+        'browserName': (process.env.TEST_BROWSER_NAME || 'chrome')
         , 'version': (process.env.TEST_BROWSER_VERSION || 'ANY')
     , },
 
@@ -21,9 +21,9 @@ exports.config = {
 
     specs: [
     '../Features/*.feature'
-  ],
-
-    cucumberOpts: {
+  ]
+    , exclude: '../Features/database.feature'
+    , cucumberOpts: {
 
         monochrome: true
         , strict: true

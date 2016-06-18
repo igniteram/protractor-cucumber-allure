@@ -15,6 +15,7 @@ This project demonstrates the basic protractor-cucumber framework project setup 
 
 ####Pre-requisites
 1.NodeJS installed globally in the system.
+https://nodejs.org/en/download/
 
 2.Chrome or Firefox browsers installed.
 
@@ -93,7 +94,7 @@ Following configuration shows to call specific tags from feature files
     }
 
 ####Database Connection
-PostgreSQL nodejs module has been integrated with this framework, database feature file eloborates the connection and how the query results are retrieved.
+PostgreSQL nodejs module has been integrated with this framework, database feature file elaborates the connection and how the query results are retrieved.
 
 >     var pg = require('pg');
     var connectDB = function() {
