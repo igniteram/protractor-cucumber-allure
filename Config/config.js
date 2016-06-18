@@ -5,7 +5,7 @@ exports.config = {
     baseUrl: 'http://www.google.com',
 
     capabilities: {
-        'browserName': (process.env.TEST_BROWSER_NAME || 'firefox')
+        'browserName': (process.env.TEST_BROWSER_NAME || 'chrome')
         , 'version': (process.env.TEST_BROWSER_VERSION || 'ANY')
     , },
 
@@ -29,7 +29,7 @@ exports.config = {
         , strict: true
         , plugin: ["pretty"]
         , require: ['../StepDefinitions/*.js', '../Support/*.js']
-        , tags: '@CucumberScenario,@ProtractorScenario,@AllureScenario' // @DatabaseTest scenario can be included when the username & password of DB have been configured in Support/database.js
+        , tags: '@AllureScenario,@Regression,@ProtractorScenario,~@DatabaseTest' // @DatabaseTest scenario can be included when the username & password of DB have been configured in Support/database.js
 
     }
 };

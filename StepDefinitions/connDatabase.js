@@ -1,3 +1,5 @@
+//Commenting out database step definition for travis tests to pass
+/*
 var ConnectDB = require('../Support/database');
 var World = require('../Support/world');
 
@@ -30,3 +32,4 @@ var databaseConnect = function () {
     });
 }
 module.exports = databaseConnect;
+*/
