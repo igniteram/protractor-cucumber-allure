@@ -9,7 +9,7 @@ var googleSearch = function () {
     };
     this.searchButton = $("button[name='btnG']");
     this.clearText = function () {
-        $("input[name='q1']").clear();
+        $("input[name='q']").clear();
     };
 };
 module.exports = googleSearch;
