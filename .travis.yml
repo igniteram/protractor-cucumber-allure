@@ -8,12 +8,13 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - sleep 3
   - ./node_modules/.bin/webdriver-manager update
-  - ./node_modules/cucumberjs-allure-reporter/node_modules/allure-js-commons/node_modules/fs-extra/npm update
-  - sleep 3
   - npm update
+  - ./node_modules/cucumberjs-allure-reporter/node_modules/allure-js-commons/node_modules/fs-extra
+  - npm update
+  - sleep 3
+
   #- nohup bash -c "./node_modules/.bin/webdriver-manager start 2>&1 &"
   #- nohup bash -c "npm start 2>&1 &"
-  - sleep 3
 
 script:
   - npm test
