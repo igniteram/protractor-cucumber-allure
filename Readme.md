@@ -1,4 +1,6 @@
-###Protractor-Cucumber-Allure Setup Guide
+###Protractor-Cucumber-Allure Setup Guide   
+ [![Build Status](https://travis-ci.org/igniteram/protractor-cucumber-allure.svg?branch=master)](https://travis-ci.org/igniteram/protractor-cucumber-allure)
+
 This project demonstrates the basic protractor-cucumber framework project setup with Jenkins CI and Allure Reports integration
 
 ###Features
