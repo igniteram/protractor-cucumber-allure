@@ -11,7 +11,7 @@ var hooks = function () {
         return browser.get(conf.baseUrl);
     });
 
-    this.After(function (scenario, callback) {
+    this.After('Successfully Applied Hooks',function (scenario, callback) {
         if (scenario.isFailed()) {
             browser.takeScreenshot().then(function (base64png) {
                 var decodedImage = new Buffer(base64png, 'base64').toString('binary');
