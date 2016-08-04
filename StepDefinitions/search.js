@@ -1,13 +1,12 @@
 /*jslint node: true*/
 var SearchPage = require('../Pages/searchPage');
-var World = require('../Support/world');
 
 var searchText = function () {
-    'use strict';
+    "use strict";
     var search = new SearchPage();
-    World.setDefaultTimeout;
+
     this.When(/^I type "(.*?)"$/, function (text) {
-        return search.searchTextBox(text);
+        return search.searchTextBox.sendKeys(text);
     });
 
     this.Then(/^I click search button$/, function () {
