@@ -1,3 +1,7 @@
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+
 exports.config = {
 
     directConnect: true,
@@ -6,7 +10,7 @@ exports.config = {
 
     capabilities: {
         'browserName': (process.env.TEST_BROWSER_NAME || 'firefox'),
-        'version': (process.env.TEST_BROWSER_VERSION || 'ANY'),  
+        'version': (process.env.TEST_BROWSER_VERSION || 'ANY')  
     },
 
     framework: 'custom',
@@ -24,9 +28,6 @@ exports.config = {
 
         browser.ignoreSynchronization = true;
         browser.manage().window().maximize();
-        var chai = require('chai');
-        var chaiAsPromised = require('chai-as-promised');
-        chai.use(chaiAsPromised);
         global.expect = chai.expect;
 
     },

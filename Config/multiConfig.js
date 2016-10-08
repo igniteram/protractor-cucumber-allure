@@ -1,3 +1,7 @@
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+
 exports.config = {
 
     directConnect: true,
@@ -26,9 +30,6 @@ exports.config = {
     onPrepare: function () {
         browser.ignoreSynchronization = true;
         browser.manage().window().maximize();
-        var chai = require('chai');
-        var chaiAsPromised = require('chai-as-promised');
-        chai.use(chaiAsPromised);
         global.expect = chai.expect;
     },
     setDefaultTimeout: 60 * 1000,

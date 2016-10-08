@@ -2,6 +2,8 @@
 var Cucumber = require('cucumber');
 var fs = require('fs');
 var conf = require('../Config/config').config;
+var reporter = require('cucumber-html-reporter');
+var CucumberHtmlReport = require('cucumber-html-report');
 
 var hooks = function () {
     "use strict";
@@ -11,26 +13,22 @@ var hooks = function () {
         return browser.get(conf.baseUrl);
     });
 
-    this.After('Successfully Applied Hooks',function (scenario, callback) {
+    this.After('Successfully Applied Hooks',function (scenario,callback) {
         if (scenario.isFailed()) {
             browser.takeScreenshot().then(function (base64png) {
                 var decodedImage = new Buffer(base64png, 'base64').toString('binary');
-                scenario.attach(decodedImage, 'image/png');
-                callback();
+                 scenario.attach(decodedImage, 'image/png');
+                 callback();
             }, function (err) {
-                callback(err);
+                return callback(err);
             });
-        } else {
-            callback();
-        }
+        } 
+        callback();
     });
 
     this.registerHandler('AfterFeature', function (event, callback) {
 
         // Here all the feature methods and actions can be performed
-
-
-        var reporter = require('cucumber-html-reporter');
 
         var options = {
             theme: 'bootstrap'
@@ -45,7 +43,6 @@ var hooks = function () {
     });
 
     var createHtmlReport = function (sourceJson) {
-        var CucumberHtmlReport = require('cucumber-html-report');
         var report = new CucumberHtmlReport({
             source: sourceJson
             , dest: outputDir
