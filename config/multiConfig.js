@@ -22,9 +22,9 @@ exports.config = {
     frameworkPath: require.resolve('protractor-cucumber-framework'),
 
     suites: {
-        allureFeature: ['../Features/allure.feature'],
-        cucumberFeature: ['../Features/cucumber.feature'],
-        protractorFeature: ['../Features/protractor.feature']
+        allureFeature: ['../features/allure.feature'],
+        cucumberFeature: ['../features/cucumber.feature'],
+        protractorFeature: ['../features/protractor.feature']
     },
 
     onPrepare: function () {
@@ -39,7 +39,7 @@ exports.config = {
         monochrome: true
         , strict: true
         , plugin: ["pretty"]
-        , require: ['../StepDefinitions/*.js', '../Support/*.js']
+        , require: ['../stepDefinitions/*.js', '../support/*.js']
         , tags: '@CucumberScenario,@ProtractorScenario,@AllureScenario,~@DatabaseTest'
 
     }

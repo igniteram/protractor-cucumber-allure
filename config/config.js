@@ -18,11 +18,11 @@ exports.config = {
     frameworkPath: require.resolve('protractor-cucumber-framework'),
 
     specs: [
-        '../Features/*.feature'
+        '../features/*.feature'
     ],
 
-    exclude: '../Features/database.feature',
-    resultJsonOutputFile: './Reports/report.json',
+    exclude: '../features/database.feature',
+    resultJsonOutputFile: './reports/report.json',
     setDefaultTimeout: 60 * 1000,
 
     onPrepare: function () {
@@ -36,7 +36,7 @@ exports.config = {
         monochrome: true,
         strict: true,
         plugin: ["pretty"],
-        require: ['../StepDefinitions/*.js', '../Support/*.js'],
+        require: ['../stepDefinitions/*.js', '../support/*.js'],
         tags: '@AllureScenario,@CucumberScenario,@ProtractorScenario,~@DatabaseTest' // @DatabaseTest scenario can be included when the username & password of DB have been configured in Support/database.js
 
     }
