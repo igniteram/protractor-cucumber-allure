@@ -13,32 +13,16 @@ var hooks = function () {
         return browser.get(conf.baseUrl);
     });
 
-    this.After('Successfully Applied Hooks',function (scenario,callback) {
+    this.After('Successfully Applied Hooks', function (scenario, callback) {
         if (scenario.isFailed()) {
             browser.takeScreenshot().then(function (base64png) {
                 var decodedImage = new Buffer(base64png, 'base64').toString('binary');
-                 scenario.attach(decodedImage, 'image/png');
-                 callback();
+                scenario.attach(decodedImage, 'image/png');
+                callback();
             }, function (err) {
                 return callback(err);
             });
-        } 
-        callback();
-    });
-
-    this.registerHandler('AfterFeature', function (event, callback) {
-
-        // Here all the feature methods and actions can be performed
-
-        var options = {
-            theme: 'bootstrap'
-            , jsonFile: 'Reports/cucumber_report.json'
-            , output: 'Reports/cucumber_report.html'
-            , reportSuiteAsScenarios: true
-        };
-
-        reporter.generate(options);
-
+        }
         callback();
     });
 
@@ -66,8 +50,15 @@ var hooks = function () {
             }
         });
     };
-
     this.registerListener(JsonFormatter);
+
+    var options = {
+        theme: 'bootstrap'
+        , jsonFile: 'Reports/cucumber_report.json'
+        , output: 'Reports/cucumber_report.html'
+        , reportSuiteAsScenarios: true
+    };
+    reporter.generate(options);
 
 }
 module.exports = hooks;

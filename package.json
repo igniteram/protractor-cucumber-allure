@@ -21,14 +21,14 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "protractor Config/config.js",
+    "test": "protractor config/config.js",
     "start": "webdriver-manager start"
   },
   "author": "Ram Pasala <ram.pasala7@gmail.com>",
   "dependencies": {
     "chai": "^3.5.0",
-    "cucumber": "^1.2.1",
-    "protractor": "^4.0.2",
+    "cucumber": "^1.3.1",
+    "protractor": "^5.0.0",
     "protractor-cucumber-framework": "^0.6.0"
   },
   "devDependencies": {

@@ -10,7 +10,8 @@ exports.config = {
 
     capabilities: {
         'browserName': (process.env.TEST_BROWSER_NAME || 'firefox'),
-        'version': (process.env.TEST_BROWSER_VERSION || 'ANY')  
+        'version': (process.env.TEST_BROWSER_VERSION || 'ANY'),
+        'marionette': false
     },
 
     framework: 'custom',
@@ -29,7 +30,6 @@ exports.config = {
         browser.ignoreSynchronization = true;
         browser.manage().window().maximize();
         global.expect = chai.expect;
-
     },
     cucumberOpts: {
 
