@@ -1,5 +1,5 @@
 /*jslint node: true*/
-var SearchPage = require('../Pages/searchPage');
+var SearchPage = require('../pages/searchPage');
 
 var searchText = function () {
     "use strict";

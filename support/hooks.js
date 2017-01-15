@@ -1,13 +1,13 @@
 /*jslint node: true*/
 var Cucumber = require('cucumber');
 var fs = require('fs');
-var conf = require('../Config/config').config;
+var conf = require('../config/config').config;
 var reporter = require('cucumber-html-reporter');
 var CucumberHtmlReport = require('cucumber-html-report');
 
 var hooks = function () {
     "use strict";
-    var outputDir = './Reports/';
+    var outputDir = './reports/';
 
     this.registerHandler('BeforeFeature', function (event) {
         return browser.get(conf.baseUrl);
@@ -54,8 +54,8 @@ var hooks = function () {
 
     var options = {
         theme: 'bootstrap'
-        , jsonFile: 'Reports/cucumber_report.json'
-        , output: 'Reports/cucumber_report.html'
+        , jsonFile: 'reports/cucumber_report.json'
+        , output: 'reports/cucumber_report.html'
         , reportSuiteAsScenarios: true
     };
     reporter.generate(options);
