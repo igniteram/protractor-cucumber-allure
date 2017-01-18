@@ -89,7 +89,7 @@ Following configuration shows to call specific tags from feature files
     monochrome: true,
     strict: true,
     plugin: ["pretty"],
-    require: ['../StepDefinitions/*.js', '../Support/*.js'],
+    require: ['../stepDefinitions/*.js', '../support/*.js'],
     tags: '@CucumberScenario,@ProtractorScenario,@AllureScenario'
     }
 
@@ -108,8 +108,12 @@ PostgreSQL nodejs module has been integrated with this framework, database featu
     };
 
 ####HTML Reports
-Default cucumber HTML reports are generated which can be customized according to specific needs
+Currently this project has been integrated with two types of cucumber HTML reports just for demo, which are generated when you run `npm test` in the `reports` folder.
+They can be customized according to user's specific needs-
+* [cucumber-html-reporter](https://github.com/gkushang/cucumber-html-reporter)
+* [cucumber-html-report](https://github.com/leinonen/cucumber-html-report)
 
+![cucumberreporterscreen](https://raw.githubusercontent.com/igniteram/protractor-cucumber-allure/master/images/cucumberReporter.PNG)
 ![cucumberreportscreen](https://raw.githubusercontent.com/igniteram/protractor-cucumber-allure/master/images/cucumberReport.png)
 
 ####Allure Reports
@@ -119,7 +123,7 @@ How to setup Jenkins and Allure framework : http://wiki.qatools.ru/display/AL/Al
 >      var reporter = require('cucumberjs-allure-reporter');
      reporter.config(
      {
-    targetDir:'./Reports/'
+    targetDir:'./reports/'
      }
      );
      module.exports = reporter;

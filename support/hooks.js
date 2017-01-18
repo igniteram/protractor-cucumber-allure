@@ -34,12 +34,18 @@ var hooks = function () {
         report.createReport();
     };
 
+    var options = {
+        theme: 'bootstrap'
+        , jsonFile: 'reports/cucumber_report.json'
+        , output: 'reports/cucumber_report.html'
+        , reportSuiteAsScenarios: true
+    };
+
     var JsonFormatter = Cucumber.Listener.JsonFormatter();
     JsonFormatter.log = function (string) {
         if (!fs.existsSync(outputDir)) {
             fs.mkdirSync(outputDir);
         }
-
         var targetJson = outputDir + 'cucumber_report.json';
         fs.writeFile(targetJson, string, function (err) {
             if (err) {
@@ -47,18 +53,10 @@ var hooks = function () {
                 console.log(err);
             } else {
                 createHtmlReport(targetJson);
+                reporter.generate(options);
             }
         });
     };
     this.registerListener(JsonFormatter);
-
-    var options = {
-        theme: 'bootstrap'
-        , jsonFile: 'reports/cucumber_report.json'
-        , output: 'reports/cucumber_report.html'
-        , reportSuiteAsScenarios: true
-    };
-    reporter.generate(options);
-
 }
 module.exports = hooks;
