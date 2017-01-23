@@ -13,10 +13,10 @@ exports.config = {
         shardTestFiles: true,
         maxInstances: 2
     }, {
-            'browserName': 'firefox',
-            shardTestFiles: true,
-            maxInstances: 2
-        }],
+        'browserName': 'firefox',
+        shardTestFiles: true,
+        maxInstances: 2
+    }],
 
     framework: 'custom',
     frameworkPath: require.resolve('protractor-cucumber-framework'),
@@ -32,15 +32,13 @@ exports.config = {
         browser.manage().window().maximize();
         global.expect = chai.expect;
     },
-    setDefaultTimeout: 60 * 1000,
 
     cucumberOpts: {
 
-        monochrome: true
-        , strict: true
-        , plugin: ["pretty"]
-        , require: ['../stepDefinitions/*.js', '../support/*.js']
-        , tags: '@CucumberScenario,@ProtractorScenario,@AllureScenario,~@DatabaseTest'
+        strict: true, 
+        format: ['pretty'], 
+        require: ['../stepDefinitions/*.js', '../support/*.js'], 
+        tags: '@CucumberScenario,@ProtractorScenario,@AllureScenario,~@DatabaseTest'
 
     }
 };
