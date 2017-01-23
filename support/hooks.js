@@ -9,7 +9,7 @@ var hooks = function () {
     "use strict";
     var outputDir = './reports/';
 
-    this.registerHandler('BeforeFeature', function (event) {
+    this.registerHandler('BeforeFeature',{timeout: 10*1000}, function (event) {
         return browser.get(conf.baseUrl);
     });
 

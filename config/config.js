@@ -23,7 +23,6 @@ exports.config = {
 
     exclude: '../features/database.feature',
     resultJsonOutputFile: './reports/report.json',
-    setDefaultTimeout: 60 * 1000,
 
     onPrepare: function () {
 
@@ -33,9 +32,8 @@ exports.config = {
     },
     cucumberOpts: {
 
-        monochrome: true,
         strict: true,
-        plugin: ["pretty"],
+        format: ['pretty'],
         require: ['../stepDefinitions/*.js', '../support/*.js'],
         tags: '@AllureScenario,@CucumberScenario,@ProtractorScenario,~@DatabaseTest' // @DatabaseTest scenario can be included when the username & password of DB have been configured in Support/database.js
 
