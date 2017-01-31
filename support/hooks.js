@@ -9,6 +9,7 @@ var hooks = function () {
     "use strict";
     var jsonReports = process.cwd() + '/reports/json';
     var htmlReports = process.cwd() + '/reports/html';
+    var targetJson = jsonReports + '/cucumber_report.json';
 
     this.registerHandler('BeforeFeature', { timeout: 10 * 1000 }, function (event) {
         return browser.get(conf.baseUrl);
@@ -27,20 +28,17 @@ var hooks = function () {
         callback();
     });
 
-    var createHtmlReport = function (sourceJson) {
-        return report.create({
-            source: sourceJson, 
-            dest: htmlReports,
-            name: 'cucumber_report.html',
-            title:'Cucumber Report'
+    var cucumberReportOptions = {
+        source: targetJson,
+        dest: htmlReports,
+        name: 'cucumber_report.html',
+        title: 'Cucumber Report'
 
-        })
-    };
-
-    var options = {
-        theme: 'bootstrap', 
-        jsonFile: jsonReports + '/cucumber_report.json', 
-        output: htmlReports + '/cucumber_reporter.html', 
+    }
+    var cucumberReporteroptions = {
+        theme: 'bootstrap',
+        jsonFile: jsonReports + '/cucumber_report.json',
+        output: htmlReports + '/cucumber_reporter.html',
         reportSuiteAsScenarios: true
     };
 
@@ -49,21 +47,20 @@ var hooks = function () {
         if (!fs.existsSync(jsonReports)) {
             fs.mkdirSync(jsonReports);
         }
-        var targetJson = jsonReports + '/cucumber_report.json';
         try {
             fs.writeFileSync(targetJson, string);
-            createHtmlReport(targetJson).then(function () {
+            report.create(cucumberReportOptions).then(function () {
                 console.log('cucumber_report.html created successfully!');
-                return reporter.generate(options);   // creating two reports here, it is optional if one report is sufficient
-            }).catch(function(err) {
-                if(err) {
+                return reporter.generate(cucumberReporteroptions);   // creating two reports here, it is optional if one report is sufficient
+            }).catch(function (err) {
+                if (err) {
                     console.error(err);
                 }
             });
-            
+
         }
-        catch(err) {
-            if(err) {
+        catch (err) {
+            if (err) {
                 console.log('Failed to save cucumber test results to json file.');
                 console.log(err);
             }
