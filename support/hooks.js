@@ -49,9 +49,9 @@ var hooks = function () {
         }
         try {
             fs.writeFileSync(targetJson, string);
-            report.create(cucumberReportOptions).then(function () {
-                console.log('cucumber_report.html created successfully!');
-                return reporter.generate(cucumberReporteroptions);   // creating two reports here, it is optional if one report is sufficient
+            reporter.generate(cucumberReporteroptions); 
+            report.create(cucumberReportOptions).then(function () {  // creating two reports here, it is optional if one report is sufficient
+                console.log('cucumber_report.html created successfully!');   
             }).catch(function (err) {
                 if (err) {
                     console.error(err);
