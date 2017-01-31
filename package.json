@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "chai-as-promised": "^5.3.0",
-    "cucumber-html-report": "^0.4.1",
+    "cucumber-html-report": "^0.5.1",
     "cucumber-html-reporter": "^0.2.6",
     "cucumberjs-allure-reporter": "^1.0.2",
     "pg": "^6.0.3"
