@@ -1,4 +1,6 @@
-###Protractor-Cucumber-Allure Setup Guide   
+###Protractor-Cucumber-Allure Setup Guide
+
+ [![CircleCI](https://circleci.com/gh/igniteram/protractor-cucumber-allure/tree/circle-ci.svg?style=shield)](https://circleci.com/gh/igniteram/protractor-cucumber-allure/tree/circle-ci)
  [![Build Status](https://travis-ci.org/igniteram/protractor-cucumber-allure.svg?branch=master)](https://travis-ci.org/igniteram/protractor-cucumber-allure)
  [![dependencies](https://david-dm.org/igniteram/protractor-cucumber-allure.svg)](https://david-dm.org/igniteram/protractor-cucumber-allure)
  [![Code Climate](https://codeclimate.com/github/igniteram/protractor-cucumber-allure/badges/gpa.svg)](https://codeclimate.com/github/igniteram/protractor-cucumber-allure)
