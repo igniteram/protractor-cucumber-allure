@@ -22,7 +22,7 @@ exports.config = {
     ],
 
     exclude: '../features/database.feature',
-    resultJsonOutputFile: './reports/report.json',
+    resultJsonOutputFile: './reports/json/protractor_report.json',
 
     onPrepare: function () {
 

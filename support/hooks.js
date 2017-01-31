@@ -3,13 +3,15 @@ var Cucumber = require('cucumber');
 var fs = require('fs');
 var conf = require('../config/config').config;
 var reporter = require('cucumber-html-reporter');
-var CucumberHtmlReport = require('cucumber-html-report');
+var report = require('cucumber-html-report');
 
 var hooks = function () {
     "use strict";
-    var outputDir = './reports/';
+    var jsonReports = process.cwd() + '/reports/json';
+    var htmlReports = process.cwd() + '/reports/html';
+    var targetJson = jsonReports + '/cucumber_report.json';
 
-    this.registerHandler('BeforeFeature',{timeout: 10*1000}, function (event) {
+    this.registerHandler('BeforeFeature', { timeout: 10 * 1000 }, function (event) {
         return browser.get(conf.baseUrl);
     });
 
@@ -26,36 +28,44 @@ var hooks = function () {
         callback();
     });
 
-    var createHtmlReport = function (sourceJson) {
-        var report = new CucumberHtmlReport({
-            source: sourceJson
-            , dest: outputDir
-        });
-        report.createReport();
-    };
+    var cucumberReportOptions = {
+        source: targetJson,
+        dest: htmlReports,
+        name: 'cucumber_report.html',
+        title: 'Cucumber Report'
 
-    var options = {
-        theme: 'bootstrap'
-        , jsonFile: 'reports/cucumber_report.json'
-        , output: 'reports/cucumber_report.html'
-        , reportSuiteAsScenarios: true
+    }
+    var cucumberReporteroptions = {
+        theme: 'bootstrap',
+        jsonFile: jsonReports + '/cucumber_report.json',
+        output: htmlReports + '/cucumber_reporter.html',
+        reportSuiteAsScenarios: true
     };
 
     var JsonFormatter = Cucumber.Listener.JsonFormatter();
     JsonFormatter.log = function (string) {
-        if (!fs.existsSync(outputDir)) {
-            fs.mkdirSync(outputDir);
+        if (!fs.existsSync(jsonReports)) {
+            fs.mkdirSync(jsonReports);
         }
-        var targetJson = outputDir + 'cucumber_report.json';
-        fs.writeFile(targetJson, string, function (err) {
+        try {
+            fs.writeFileSync(targetJson, string);
+            reporter.generate(cucumberReporteroptions);  //invoke cucumber-html-reporter
+            report.create(cucumberReportOptions).then(function () {  //invoke cucumber-html-report
+            // creating two reports(optional) here, cucumber-html-report gives directory already exists as cucumber-html-reporter already creates the html dir!
+            // suggestion- use either one of the reports based on your needs
+                console.log('cucumber_report.html created successfully!');   
+            }).catch(function (err) {
+                if (err) {
+                    console.error(err);
+                }
+            });
+        }
+        catch (err) {
             if (err) {
                 console.log('Failed to save cucumber test results to json file.');
                 console.log(err);
-            } else {
-                createHtmlReport(targetJson);
-                reporter.generate(options);
             }
-        });
+        }
     };
     this.registerListener(JsonFormatter);
 }
