@@ -49,15 +49,16 @@ var hooks = function () {
         }
         try {
             fs.writeFileSync(targetJson, string);
-            reporter.generate(cucumberReporteroptions); 
-            report.create(cucumberReportOptions).then(function () {  // creating two reports here, it is optional if one report is sufficient
+            reporter.generate(cucumberReporteroptions);  //invoke cucumber-html-reporter
+            report.create(cucumberReportOptions).then(function () {  //invoke cucumber-html-report
+            // creating two reports(optional) here, cucumber-html-report gives directory already exists as cucumber-html-reporter already creates the html dir!
+            // suggestion- use either one of the reports based on your needs
                 console.log('cucumber_report.html created successfully!');   
             }).catch(function (err) {
                 if (err) {
                     console.error(err);
                 }
             });
-
         }
         catch (err) {
             if (err) {
