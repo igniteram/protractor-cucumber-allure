@@ -1,18 +1,13 @@
-/*jslint node: true*/
-var SearchPage = require('../pages/searchPage');
+"use strict";
+var search = require("../pages/searchPage");
+var { defineSupportCode } = require("cucumber");
 
-var searchText = function () {
-    "use strict";
-    var search = new SearchPage();
+defineSupportCode(function({ When, Then }) {
+  When(/^I type "(.*?)"$/, function(text) {
+    return search.searchTextBox.sendKeys(text);
+  });
 
-    this.When(/^I type "(.*?)"$/, function (text) {
-        return search.searchTextBox.sendKeys(text);
-    });
-
-    this.Then(/^I click search button$/, function () {
-        return search.searchButton.click();
-    });
-
-};
-
-module.exports = searchText;
+  Then(/^I click search button$/, function() {
+    return search.searchButton.click();
+  });
+});

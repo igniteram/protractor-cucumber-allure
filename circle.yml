@@ -9,6 +9,10 @@ machine:
 dependencies:
   override:
     - npm update
+  post:
+    - npm run webdriver-update
+    - npm run webdriver-start:
+          background: true
 test:
   override:
     - npm test

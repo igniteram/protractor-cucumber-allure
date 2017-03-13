@@ -1,14 +1,9 @@
-/*jslint node: true*/
-var SearchPage = require('../pages/searchPage');
+"use strict";
+var search = require("../pages/searchPage");
+var { defineSupportCode } = require("cucumber");
 
-var clearPage = function () {
-    "use strict";
-    var search = new SearchPage();
-
-    this.Then(/^I clear search textbox$/, function () {
-
-        return search.searchTextBox.clear();
-    });
-};
-
-module.exports = clearPage;
+defineSupportCode(function({ Then }) {
+  Then(/^I clear search textbox$/, function() {
+    return search.searchTextBox.clear();
+  });
+});

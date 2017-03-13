@@ -1,15 +1,9 @@
-/*jslint node: true*/
-var SearchPage = require('../pages/searchPage');
+"use strict";
+var search = require("../pages/searchPage");
+var { defineSupportCode } = require("cucumber");
 
-var homePage = function () {
-    "use strict";
-    var search = new SearchPage();
-    
-    this.Given(/^I am on google page$/, function () {
-
-        return expect(browser.getTitle()).to.eventually.equal('Google');
-
-    });
-};
-
-module.exports = homePage;
+defineSupportCode(function({ Given }) {
+  Given(/^I am on google page$/, function() {
+    return expect(browser.getTitle()).to.eventually.equal("Google");
+  });
+});
