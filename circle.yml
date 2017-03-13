@@ -8,11 +8,14 @@ machine:
 
 dependencies:
   override:
-    - npm update
+    - yarn
   post:
-    - npm run webdriver-update
-    - npm run webdriver-start:
+    - curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - sudo dpkg -i google-chrome.deb
+    - sleep 3
+    - yarn run webdriver-update
+    - yarn run webdriver-start:
           background: true
 test:
   override:
-    - npm test
+    - yarn test
