@@ -1,4 +1,4 @@
-###Protractor-Cucumber-Allure Setup Guide
+### Protractor-Cucumber-Allure Setup Guide
 
  [![CircleCI](https://circleci.com/gh/igniteram/protractor-cucumber-allure/tree/circle-ci.svg?style=shield)](https://circleci.com/gh/igniteram/protractor-cucumber-allure/tree/circle-ci)
  [![Build Status](https://travis-ci.org/igniteram/protractor-cucumber-allure.svg?branch=master)](https://travis-ci.org/igniteram/protractor-cucumber-allure)
@@ -7,7 +7,7 @@
 
 This project demonstrates the basic protractor-cucumber framework project setup with Jenkins CI and Allure Reports integration
 
-###Features
+### Features
 * Crisp & Clear folder structures
 * Page Object design pattern implementation
 * DirectConnect capability for Chrome & Firefox browsers
@@ -18,9 +18,9 @@ This project demonstrates the basic protractor-cucumber framework project setup 
 * Support for cucumber-html-reports
 * Support for CI and Cucumber-Allure-Jenkins reports
 
-###To Get Started
+### To Get Started
 
-####Pre-requisites
+#### Pre-requisites
 1.NodeJS installed globally in the system.
 https://nodejs.org/en/download/
 
@@ -30,7 +30,7 @@ https://nodejs.org/en/download/
 
 3.Text Editor(Optional) installed-->Sublime/Visual Studio Code.
 
-####Run Scripts
+#### Run Scripts
 * Clone the repository into a folder
 * Go inside the folder and run following command from terminal/command prompt
 
@@ -41,7 +41,7 @@ https://nodejs.org/en/download/
 
  >   npm test
 
-####Writing Features
+#### Writing Features
 >     Feature: To search allure reports in google
       @AllureScenario
       Scenario: Allure Reports Google
@@ -50,7 +50,7 @@ https://nodejs.org/en/download/
         Then I click search button
         Then I clear search textbox
 
-####Writing Step Definitions
+#### Writing Step Definitions
 >     var homePage = function () {
      "use strict";
     var search = new searchPage(); 
@@ -59,7 +59,7 @@ https://nodejs.org/en/download/
        });
      };
          
-####Writing Page Objects
+#### Writing Page Objects
 >     var googleSearch = function () {
     "use strict";
     this.searchTextBox = $("input[name='q']");
@@ -67,7 +67,7 @@ https://nodejs.org/en/download/
       };
     module.exports = googleSearch;
 
-####Cucumber Hooks
+#### Cucumber Hooks
 Following method takes screenshot on failure of each scenario
 
 >      this.After(function(scenario, callback) {
@@ -84,7 +84,7 @@ Following method takes screenshot on failure of each scenario
        }
        });
 
-####CucumberOpts Tags
+#### CucumberOpts Tags
 Following configuration shows to call specific tags from feature files
 
 >     cucumberOpts: {
@@ -95,7 +95,7 @@ Following configuration shows to call specific tags from feature files
     tags: '@CucumberScenario,@ProtractorScenario,@AllureScenario'
     }
 
-####Database Connection
+#### Database Connection
 PostgreSQL nodejs module has been integrated with this framework, database feature file elaborates the connection and how the query results are retrieved.
 
 >     var pg = require('pg');
@@ -109,7 +109,7 @@ PostgreSQL nodejs module has been integrated with this framework, database featu
     });
     };
 
-####HTML Reports
+#### HTML Reports
 Currently this project has been integrated with two types of cucumber HTML reports just for demo, which are generated when you run `npm test` in the `reports` folder.
 They can be customized according to user's specific needs-
 * [cucumber-html-reporter](https://github.com/gkushang/cucumber-html-reporter)
@@ -118,7 +118,7 @@ They can be customized according to user's specific needs-
 ![cucumberreporterscreen](https://raw.githubusercontent.com/igniteram/protractor-cucumber-allure/master/images/cucumberReporter.PNG)
 ![cucumberreportscreen](https://raw.githubusercontent.com/igniteram/protractor-cucumber-allure/master/images/cucumberReport.png)
 
-####Allure Reports
+#### Allure Reports
 The reporter.js file in Support folder generates the target directory "Reports" in which the xml files are generated.For detail instructions on how it works, please refer the Allure-CucumberJS official repo : https://github.com/allure-framework/cucumberjs-allure-reporter
 
 How to setup Jenkins and Allure framework : http://wiki.qatools.ru/display/AL/Allure+Jenkins+Plugin
@@ -133,5 +133,5 @@ How to setup Jenkins and Allure framework : http://wiki.qatools.ru/display/AL/Al
 ![allurereportscreen](https://raw.githubusercontent.com/igniteram/protractor-cucumber-allure/master/images/allureReport.png)
 ![alluregraphscreen](https://raw.githubusercontent.com/igniteram/protractor-cucumber-allure/master/images/allureReportGraph.png)
 
-##Contributions
+## Contributions
 For contributors who want to improve this repo by contributing some code, reporting bugs, issues or improving documentation - PR's are highly welcome, please maintain the coding style , folder structure , detailed description of documentation and bugs/issues with examples if possible.
