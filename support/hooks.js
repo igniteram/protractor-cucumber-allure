@@ -16,17 +16,14 @@ defineSupportCode(function({ registerHandler, After, registerListener }) {
     return browser.get(conf.baseUrl);
   });
 
-  After(function(scenario, callback) {
+  After(function(scenario) {
     if (scenario.isFailed()) {
-      browser.takeScreenshot().then(function(base64png) {
-        var decodedImage = new Buffer(base64png, "base64").toString("binary");
-        scenario.attach(decodedImage, "image/png");
-        callback();
-      }, function(err) {
-        return callback(err);
+      var attach = this.attach; // cucumber's world object has attach function which should be used
+      return browser.takeScreenshot().then(function(png) {
+        var decodedImage = new Buffer(png, "base64");
+        return attach(decodedImage, "image/png");
       });
     }
-    callback();
   });
 
   var cucumberReportOptions = {

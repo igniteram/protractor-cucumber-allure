@@ -28,15 +28,15 @@
   "author": "Ram Pasala <ram.pasala7@gmail.com>",
   "dependencies": {
     "chai": "^3.5.0",
-    "cucumber": "^2.0.0-rc.8",
+    "cucumber": "^2.2.0",
     "mkdirp": "^0.5.1",
     "protractor": "^5.1.1",
-    "protractor-cucumber-framework": "^1.0.1"
+    "protractor-cucumber-framework": "^3.1.0"
   },
   "devDependencies": {
-    "chai-as-promised": "^5.3.0",
-    "cucumber-html-report": "^0.5.1",
-    "cucumber-html-reporter": "^0.2.6",
+    "chai-as-promised": "^6.0.0",
+    "cucumber-html-report": "^0.6.0",
+    "cucumber-html-reporter": "^0.4.2",
     "cucumberjs-allure-reporter": "^1.0.3",
     "pg": "^6.0.3"
   },
