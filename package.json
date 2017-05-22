@@ -22,8 +22,8 @@
   "main": "index.js",
   "scripts": {
     "test": "protractor config/config.js",
-    "webdriver-start": "webdriver-manager start --versions.standalone=2.53.1",
-    "webdriver-update": "webdriver-manager update --standalone --versions.standalone=2.53.1"
+    "webdriver-start": "webdriver-manager start",
+    "webdriver-update": "webdriver-manager update"
   },
   "author": "Ram Pasala <ram.pasala7@gmail.com>",
   "dependencies": {
