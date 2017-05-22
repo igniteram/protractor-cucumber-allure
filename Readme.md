@@ -54,7 +54,8 @@ https://nodejs.org/en/download/
 
 #### Writing Step Definitions
 
->   
+>     
+    var googleSearch = function () {
     "use strict";
     var search = require("../pages/searchPage");
     var { defineSupportCode } = require("cucumber");
@@ -89,7 +90,6 @@ Following method takes screenshot on failure of each scenario
                 }
             });
         });
-       
 
 #### CucumberOpts Tags
 Following configuration shows to call specific tags from feature files
