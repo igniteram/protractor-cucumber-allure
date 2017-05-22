@@ -2,3 +2,4 @@
 Reports/
 node_modules/
 .vscode
+*.log
