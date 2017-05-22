@@ -42,7 +42,9 @@ https://nodejs.org/en/download/
  >   npm test
 
 #### Writing Features
->     Feature: To search allure reports in google
+
+>     
+      Feature: To search allure reports in google
       @AllureScenario
       Scenario: Allure Reports Google
         Given I am on google page
@@ -51,54 +53,60 @@ https://nodejs.org/en/download/
         Then I clear search textbox
 
 #### Writing Step Definitions
->     var homePage = function () {
-     "use strict";
-    var search = new searchPage(); 
-    this.Given(/^I am on google page$/, function () {
-     return expect(search.title()).to.eventually.equal('Google');
-       });
-     };
+
+>     
+    var googleSearch = function () {
+    "use strict";
+    var search = require("../pages/searchPage");
+    var { defineSupportCode } = require("cucumber");
+
+    defineSupportCode(function({ Given }) {
+        Given(/^I am on google page$/, function() {
+            return expect(browser.getTitle()).to.eventually.equal("Google");
+          });
+    });
          
 #### Writing Page Objects
->     var googleSearch = function () {
-    "use strict";
-    this.searchTextBox = $("input[name='q']");
-    this.searchButton = $("button[name='btnG']");
-      };
-    module.exports = googleSearch;
+
+>   
+    function googleSearch() {
+       this.searchTextBox = $("input[name='q']");
+       this.searchButton = $("button[name='btnG']");
+    }
+    module.exports = new googleSearch();
 
 #### Cucumber Hooks
 Following method takes screenshot on failure of each scenario
 
->      this.After(function(scenario, callback) {
-       if (scenario.isFailed()) {
-       browser.takeScreenshot().then(function(base64png) {
-       var decodedImage = new Buffer(base64png, 'base64').toString('binary');
-       scenario.attach(decodedImage, 'image/png');
-       callback();
-       }, function(err) {
-       callback(err);
-       });
-       } else {
-       callback();
-       }
-       });
+>      
+     defineSupportCode(function(After) {
+        After(function(scenario) {
+            if (scenario.isFailed()) {
+                var attach = this.attach; // cucumber's world object has attach function which should be used
+                    return browser.takeScreenshot().then(function(png) {
+                var decodedImage = new Buffer(png, "base64");
+                    return attach(decodedImage, "image/png");
+                });
+                }
+            });
+        });
 
 #### CucumberOpts Tags
 Following configuration shows to call specific tags from feature files
 
->     cucumberOpts: {
-    monochrome: true,
+>     
+    cucumberOpts: {
     strict: true,
-    plugin: ["pretty"],
-    require: ['../stepDefinitions/*.js', '../support/*.js'],
-    tags: '@CucumberScenario,@ProtractorScenario,@AllureScenario'
+    format: ["pretty"],
+    require: ["../stepDefinitions/*.js", "../support/*.js"],
+    tags: "(@AllureScenario or @CucumberScenario or @ProtractorScenario) and (not @DatabaseTest)" 
     }
 
 #### Database Connection
 PostgreSQL nodejs module has been integrated with this framework, database feature file elaborates the connection and how the query results are retrieved.
 
->     var pg = require('pg');
+>     
+    var pg = require('pg');
     var connectDB = function() {
     var conString = "postgres://username:password@localhost:5432/database_name";
     this.client = new pg.Client(conString);
@@ -119,16 +127,22 @@ They can be customized according to user's specific needs-
 ![cucumberreportscreen](https://raw.githubusercontent.com/igniteram/protractor-cucumber-allure/master/images/cucumberReport.png)
 
 #### Allure Reports
+
+##### Caveat
+
+These reports do not support latest **cucumber 2.0 version**, however they work with older **version cucumber 1.3.5 & less**. You would have to use the older cucumber syntax as well.
+
 The reporter.js file in Support folder generates the target directory "Reports" in which the xml files are generated.For detail instructions on how it works, please refer the Allure-CucumberJS official repo : https://github.com/allure-framework/cucumberjs-allure-reporter
 
 How to setup Jenkins and Allure framework : http://wiki.qatools.ru/display/AL/Allure+Jenkins+Plugin
->      var reporter = require('cucumberjs-allure-reporter');
+>      
+    var reporter = require('cucumberjs-allure-reporter');
      reporter.config(
      {
-    targetDir:'./reports/'
+        targetDir:'./reports/'
      }
      );
-     module.exports = reporter;
+    module.exports = reporter;
 
 ![allurereportscreen](https://raw.githubusercontent.com/igniteram/protractor-cucumber-allure/master/images/allureReport.png)
 ![alluregraphscreen](https://raw.githubusercontent.com/igniteram/protractor-cucumber-allure/master/images/allureReportGraph.png)
