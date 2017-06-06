@@ -27,8 +27,8 @@
   },
   "author": "Ram Pasala <ram.pasala7@gmail.com>",
   "dependencies": {
-    "chai": "^3.5.0",
-    "cucumber": "^2.2.0",
+    "chai": "^4.0.2",
+    "cucumber": "^2.3.0",
     "mkdirp": "^0.5.1",
     "protractor": "^5.1.1",
     "protractor-cucumber-framework": "^3.1.0"
@@ -36,7 +36,7 @@
   "devDependencies": {
     "chai-as-promised": "^6.0.0",
     "cucumber-html-report": "^0.6.0",
-    "cucumber-html-reporter": "^0.4.2",
+    "cucumber-html-reporter": "^0.5.2",
     "cucumberjs-allure-reporter": "^1.0.3",
     "pg": "^6.0.3"
   },
