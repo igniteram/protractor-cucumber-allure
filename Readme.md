@@ -1,13 +1,11 @@
-<p>
-<center><h3>Protractor-Cucumber-Allure Setup Guide</h3></center>
-</p>
+<h3>Protractor-Cucumber-Allure Setup Guide</h3>
 
-<p align="center">
+<p>
 <a href="https://circleci.com/gh/igniteram/protractor-cucumber-allure/tree/master"><img alt="circleCI Status" src="https://circleci.com/gh/igniteram/protractor-cucumber-allure.svg?style=shield"></a>
 <a href="https://codeclimate.com/github/igniteram/protractor-cucumber-allure"><img alt="code climate status" src="https://codeclimate.com/github/igniteram/protractor-cucumber-allure/badges/gpa.svg"></a>
 <a href="https://opensource.org/licenses/MIT"><img alt="MIT License" src="https://img.shields.io/dub/l/vibe-d.svg"></a>
 </p>
-<p align="center">
+<p>
 <i><strong>This project demonstrates the basic protractor-cucumber framework project setup with Jenkins CI and Allure Reports integration</strong></i>
 </p>
 
@@ -131,7 +129,11 @@ You need to install PostgreSQL nodejs modulewith this framework.
 npm install -D pg
 ```
 
+<<<<<<< HEAD
+ database feature file elaborates the connection and how the query results are retrieved.
+=======
 database feature file elaborates the connection and how the query results are retrieved.
+>>>>>>> master
 
 ```    
 const pg = require('pg');
