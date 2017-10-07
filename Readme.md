@@ -1,21 +1,27 @@
-### Protractor-Cucumber-Allure Setup Guide
+<center><h3>Protractor-Cucumber-Allure Setup Guide</h3></center>
 
- [![CircleCI](https://circleci.com/gh/igniteram/protractor-cucumber-allure.svg?style=shield)](https://circleci.com/gh/igniteram/protractor-cucumber-allure)
- [![dependencies](https://david-dm.org/igniteram/protractor-cucumber-allure.svg)](https://david-dm.org/igniteram/protractor-cucumber-allure)
- [![Code Climate](https://codeclimate.com/github/igniteram/protractor-cucumber-allure/badges/gpa.svg)](https://codeclimate.com/github/igniteram/protractor-cucumber-allure)
+<p align="center">
+<a href="https://circleci.com/gh/igniteram/protractor-cucumber-allure/tree/master"><img alt="circleCI Status" src="https://circleci.com/gh/igniteram/protractor-cucumber-allure.svg?style=shield"></a>
+<a href="https://david-dm.org/igniteram/protractor-cucumber-allure"><img alt="dependencies status" src="https://david-dm.org/igniteram/protractor-cucumber-allure.svg"></a>
+<a href="https://codeclimate.com/github/igniteram/protractor-cucumber-allure"><img alt="code climate status" src="https://codeclimate.com/github/igniteram/protractor-cucumber-allure/badges/gpa.svg"></a>
+<a href="https://opensource.org/licenses/MIT"><img alt="MIT License" src="https://img.shields.io/dub/l/vibe-d.svg"></a>
+</p>
+<p align="center">
+<i><strong>This project demonstrates the basic protractor-cucumber framework project setup with Jenkins CI and Allure Reports integration</strong></i>
+</p>
 
-This project demonstrates the basic protractor-cucumber framework project setup with Jenkins CI and Allure Reports integration
+---
+
 
 ### Features
 * Crisp & Clear folder structures
 * Page Object design pattern implementation
-* DirectConnect capability for Chrome & Firefox browsers
-* Extensive hooks implemented for BeforeFeature, AfterFeature, AfterScenarios etc.
+* Extensive hooks implemented for BeforeAll, After etc.
 * MultiCapabalities and Test Sharding example
 * Screenshots on failure feature scenarios
 * PosgreSQL database connection feature example
 * Support for cucumber-html-reports
-* Support for CI and Cucumber-Allure-Jenkins reports
+* Support for CI and Cucumber-Allure-Jenkins reports - check the [Caveat](#caveat) section below
 
 ### To Get Started
 
@@ -31,90 +37,107 @@ https://nodejs.org/en/download/
 
 #### Run Scripts
 * Clone the repository into a folder
-* Go inside the folder and run following command from terminal/command prompt
+* Go inside the folder and run following command from terminal/command prompt which would then install all the dependencies from package.json
 
- >  npm install 
+```
+npm install
+```
 
-* All the dependencies from package.json would be installed in node_modules folder.
-* Following command will launch the browser and run the scripts
+* Then first step is to fire up the selenium server which could be done in many ways,  **webdriver-manager** proves very handy for this.The below command should download the **chrome & gecko driver** binaries locally for you!
 
- >   npm test
+```
+npm run webdriver-update
+``` 
+
+* Then you should start your selenium server!
+```
+npm run webdriver-start
+```
+
+* Following command will launch the chrome browser and run the scripts
+
+```
+npm test
+```
 
 #### Writing Features
 
->     
-      Feature: To search allure reports in google
-      @AllureScenario
-      Scenario: Allure Reports Google
+``` 
+Feature: To search allure reports in google
+    @AllureScenario
+    Scenario: Allure Reports Google
         Given I am on google page
         When I type "allure reports"
         Then I click search button
         Then I clear search textbox
+```
 
 #### Writing Step Definitions
 
->   
-    "use strict";
-    var search = require("../pages/searchPage");
-    var { defineSupportCode } = require("cucumber");
+```
+"use strict";
+"use strict";
+const search = require("../pages/searchPage");
+const { Given } = require("cucumber");
 
-    defineSupportCode(function({ Given }) {
-        Given(/^I am on google page$/, function() {
-            return expect(browser.getTitle()).to.eventually.equal("Google");
-          });
-    });
-         
+  Given(/^I am on google page$/, function() {
+    return expect(browser.getTitle()).to.eventually.equal("Google");
+  });
+```
+
 #### Writing Page Objects
 
->   
-    function googleSearch() {
-       this.searchTextBox = $("input[name='q']");
-       this.searchButton = $("button[name='btnG']");
-    }
-    module.exports = new googleSearch();
+```
+function googleSearch() {
+  this.searchTextBox = $("#lst-ib");
+  this.searchButton = $("input[value='Google Search']");
+}
+module.exports = new googleSearch();
+```
 
 #### Cucumber Hooks
 Following method takes screenshot on failure of each scenario
 
->      
-     defineSupportCode(function(After) {
-        After(function(scenario) {
-            if (scenario.isFailed()) {
-                var attach = this.attach; // cucumber's world object has attach function which should be used
-                    return browser.takeScreenshot().then(function(png) {
-                var decodedImage = new Buffer(png, "base64");
-                    return attach(decodedImage, "image/png");
-                });
-                }
-            });
-        });
+```     
+     
+After(function(scenario) {
+    if (scenario.result.status === Status.FAILED) {
+    const attach = this.attach; // cucumber's world object has attach function which should be used
+        return browser.takeScreenshot().then(function(png) {
+        const decodedImage = new Buffer(png, "base64");
+        return attach(decodedImage, "image/png");
+    });
+}
        
+```
 
 #### CucumberOpts Tags
 Following configuration shows to call specific tags from feature files
 
->     
-    cucumberOpts: {
+```     
+cucumberOpts: {
     strict: true,
-    format: ["pretty"],
+    format: 'json:./reports/json/cucumber_report.json',
     require: ["../stepDefinitions/*.js", "../support/*.js"],
-    tags: "(@AllureScenario or @CucumberScenario or @ProtractorScenario) and (not @DatabaseTest)" 
-    }
+    tags: "(@AllureScenario or @CucumberScenario or @ProtractorScenario)"
+}
+```
 
 #### Database Connection
 PostgreSQL nodejs module has been integrated with this framework, database feature file elaborates the connection and how the query results are retrieved.
 
->     
-    var pg = require('pg');
-    var connectDB = function() {
-    var conString = "postgres://username:password@localhost:5432/database_name";
-    this.client = new pg.Client(conString);
-    this.client.connect(function(err){
+```    
+const pg = require('pg');
+const connectDB = function() {
+const conString = "postgres://username:password@localhost:5432/database_name";
+this.client = new pg.Client(conString);
+this.client.connect(function(err){
     if(err){
-            return console.error('could not connect to postgres', err);
-        }
+        return console.error('could not connect to postgres', err);
+    }
     });
-    };
+};
+```
 
 #### HTML Reports
 Currently this project has been integrated with two types of cucumber HTML reports just for demo, which are generated when you run `npm test` in the `reports` folder.
@@ -135,7 +158,7 @@ The reporter.js file in Support folder generates the target directory "Reports" 
 
 How to setup Jenkins and Allure framework : http://wiki.qatools.ru/display/AL/Allure+Jenkins+Plugin
 >      
-    var reporter = require('cucumberjs-allure-reporter');
+    const reporter = require('cucumberjs-allure-reporter');
      reporter.config(
      {
         targetDir:'./reports/'
