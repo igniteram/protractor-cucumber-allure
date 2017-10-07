@@ -128,7 +128,9 @@ You need to install PostgreSQL nodejs modulewith this framework.
 ```
 npm install -D pg
 ```
- database feature file elaborates the connection and how the query results are retrieved.
+
+database feature file elaborates the connection and how the query results are retrieved.
+ 
 ```    
 const pg = require('pg');
 const connectDB = function() {
