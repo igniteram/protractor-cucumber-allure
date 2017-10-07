@@ -1,6 +1,4 @@
-<p>
-<center><h3>Protractor-Cucumber-Allure Setup Guide</h3></center>
-</p>
+<h3 style="text-align: center;" markdown="1">Protractor-Cucumber-Allure Setup Guide</h3>
 
 <p align="center">
 <a href="https://circleci.com/gh/igniteram/protractor-cucumber-allure/tree/master"><img alt="circleCI Status" src="https://circleci.com/gh/igniteram/protractor-cucumber-allure.svg?style=shield"></a>
