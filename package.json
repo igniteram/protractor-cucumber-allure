@@ -1,6 +1,6 @@
 {
   "name": "protractor-cucumber-allure",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "description": "To demostrate protractor cucumber tests for angular/non angular apps with allure report framework",
   "homepage": "https://github.com/igniteram/protractor-cucumber-allure",
@@ -34,7 +34,6 @@
     "cucumber-html-reporter": "^3.0.4",
     "cucumberjs-allure-reporter": "^1.0.3",
     "mkdirp": "^0.5.1",
-    "pg": "^6.0.3",
     "protractor": "^5.1.2",
     "protractor-cucumber-framework": "^4.0.8"
   },

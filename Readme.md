@@ -1,8 +1,9 @@
+<p>
 <center><h3>Protractor-Cucumber-Allure Setup Guide</h3></center>
+</p>
 
 <p align="center">
 <a href="https://circleci.com/gh/igniteram/protractor-cucumber-allure/tree/master"><img alt="circleCI Status" src="https://circleci.com/gh/igniteram/protractor-cucumber-allure.svg?style=shield"></a>
-<a href="https://david-dm.org/igniteram/protractor-cucumber-allure"><img alt="dependencies status" src="https://david-dm.org/igniteram/protractor-cucumber-allure.svg"></a>
 <a href="https://codeclimate.com/github/igniteram/protractor-cucumber-allure"><img alt="code climate status" src="https://codeclimate.com/github/igniteram/protractor-cucumber-allure/badges/gpa.svg"></a>
 <a href="https://opensource.org/licenses/MIT"><img alt="MIT License" src="https://img.shields.io/dub/l/vibe-d.svg"></a>
 </p>
@@ -19,7 +20,7 @@
 * Extensive hooks implemented for BeforeAll, After etc.
 * MultiCapabalities and Test Sharding example
 * Screenshots on failure feature scenarios
-* PosgreSQL database connection feature example
+* PosgreSQL database connection feature example - see [Database](#database)
 * Support for cucumber-html-reports
 * Support for CI and Cucumber-Allure-Jenkins reports - check the [Caveat](#caveat) section below
 
@@ -123,8 +124,14 @@ cucumberOpts: {
 }
 ```
 
-#### Database Connection
-PostgreSQL nodejs module has been integrated with this framework, database feature file elaborates the connection and how the query results are retrieved.
+#### Database
+You need to install PostgreSQL nodejs modulewith this framework.
+
+```
+npm install -D pg
+```
+
+ database feature file elaborates the connection and how the query results are retrieved.
 
 ```    
 const pg = require('pg');
