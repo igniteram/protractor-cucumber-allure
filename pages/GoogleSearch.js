@@ -1,8 +1,24 @@
-"use strict";
-function googleSearch() {
-  this.searchTextBox = $("#lst-ib");
-  this.searchButton = $("input[value='Google Search']");
+class GoogleSearch{
+    constructor(){
+        this.searchTextBox = $("searchTextBox");
+        this.searchButton = $("searchButton");
+    }
+
+    getSearchTextBox() {
+        return this.searchTextBox;
+    }
+
+    setSearchTextBox(searchTextBox) {
+        this.searchTextBox = $(searchTextBox);
+    }//#lst-ib
+
+    getSearchButton() {
+        return this.searchButton;
+    }
+
+    setSearchButton(searchButton) {
+        this.searchButton = $(searchButton);
+    }//input[value='Google Search']
 }
-module.exports = new googleSearch();
 
-
+export default GoogleSearch;
