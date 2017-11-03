@@ -1,7 +1,13 @@
-"use strict";
-const search = require("../pages/searchPage");
-const { Then } = require("cucumber");
+import GoogleSearch from '../pages/GoogleSearch';
+import { defineSupportCode } from "cucumber";
 
-  Then(/^I clear search textbox$/, function() {
-    return search.searchTextBox.clear();
-  });
+// GoogleSearch page instance
+const googleSearch = new GoogleSearch();
+
+defineSupportCode(({ Then }) => {
+    Then(/^I clear search textbox "([^"]*)"$/, (searchTextBox) => {
+        googleSearch.setSearchTextBox(searchTextBox);
+        return googleSearch.searchTextBox.clear();
+    });
+});
+
