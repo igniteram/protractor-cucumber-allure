@@ -1,15 +1,21 @@
-"use strict";
-const search = require("../pages/searchPage");
-const { Given } = require("cucumber");
+import Globals from '../support/Globals';
+import { browser } from 'protractor';
+import { defineSupportCode } from "cucumber";
 
-  Given(/^I am on google page$/, function() {
-    return expect(browser.getTitle()).to.eventually.equal("Google");
-  });
+// Chai
+const globals = new Globals();
+const expect = globals.expect;
 
-  Given(/^I am on allure search page$/, function() {
-    return expect(browser.getTitle()).to.eventually.equal("allure reports - Google Search");
-  });
+defineSupportCode(({ Given }) => {
+    Given(/^I am on google page with title "(.*?)"$/, (title) => {
+        return expect(browser.getTitle()).to.eventually.equal(title);
+    });
 
-  Given(/^I am on cucumber search page$/, function() {
-    return expect(browser.getTitle()).to.eventually.equal("cucumber - Google Search");
-  });
+    Given(/^I am on allure page with title "(.*?)"$/, (title) => {
+        return expect(browser.getTitle()).to.eventually.equal(title);
+    });
+
+    Given(/^I am on cucumber page with title "(.*?)"$/, (title) => {
+        return expect(browser.getTitle()).to.eventually.equal(title);
+    });
+});
