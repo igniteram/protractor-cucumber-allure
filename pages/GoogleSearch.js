@@ -10,7 +10,7 @@ class GoogleSearch{
 
     setSearchTextBox(searchTextBox) {
         this.searchTextBox = $(searchTextBox);
-    }//#lst-ib
+    }
 
     getSearchButton() {
         return this.searchButton;
@@ -18,7 +18,7 @@ class GoogleSearch{
 
     setSearchButton(searchButton) {
         this.searchButton = $(searchButton);
-    }//input[value='Google Search']
+    }
 }
 
 export default GoogleSearch;
