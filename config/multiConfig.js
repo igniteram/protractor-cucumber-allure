@@ -1,7 +1,3 @@
-const chai = require("chai");
-const chaiAsPromised = require("chai-as-promised");
-chai.use(chaiAsPromised);
-
 exports.config = {
   seleniumAddress: "http://127.0.0.1:4444/wd/hub",
 
@@ -32,7 +28,7 @@ exports.config = {
   onPrepare: function() {
     browser.ignoreSynchronization = true;
     browser.manage().window().maximize();
-    global.expect = chai.expect;
+    require('babel-register');
   },
 
   cucumberOpts: {
