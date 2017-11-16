@@ -4,7 +4,7 @@ const Reporter = require("../support/reporter");
 
 exports.config = {
   seleniumAddress: "http://localhost:4444/wd/hub",
-  baseUrl: "http://www.google.com",
+  baseUrl: "https://www.google.com/ncr",
   capabilities: {
     browserName: process.env.TEST_BROWSER_NAME || "chrome"
   },
