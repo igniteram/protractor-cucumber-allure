@@ -1,12 +1,20 @@
-"use strict";
-const search = require("../pages/searchPage");
-const { When, Then } = require("cucumber");
+import GoogleSearch from '../pages/GoogleSearch';
+import Globals from '../support/Globals';
+import { browser } from 'protractor';
+import { When, Then } from "cucumber";
 
-  When(/^I type "(.*?)"$/, function(text) {
-    return search.searchTextBox.sendKeys(text);
-  });
+// Chai
+const globals = new Globals();
+const expect = globals.expect;
 
-  Then(/^I click search button$/, function() {
-  // Here performing keyboard enter as google's search button keeps on changing
+// GoogleSearch page instance
+const googleSearch = new GoogleSearch();
+
+When(/^I type "(.*?)"$/, (text) => {
+    return googleSearch.searchTextBox.sendKeys(text);
+});
+
+Then(/^I click search button$/, () => {
+    //Here performing keyboard enter as google's search button keeps on changing
     return browser.actions().sendKeys(protractor.Key.ENTER).perform();
-  });
+});

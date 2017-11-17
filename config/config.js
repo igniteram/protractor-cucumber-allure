@@ -1,13 +1,10 @@
-const chai = require("chai");
-const chaiAsPromised = require("chai-as-promised");
-chai.use(chaiAsPromised);
 const path = require("path");
 const jsonReports = process.cwd() + "/reports/json";
 const Reporter = require("../support/reporter");
 
 exports.config = {
   seleniumAddress: "http://localhost:4444/wd/hub",
-  baseUrl: "http://www.google.com",
+  baseUrl: "https://www.google.com/ncr",
   capabilities: {
     browserName: process.env.TEST_BROWSER_NAME || "chrome"
   },
@@ -19,7 +16,7 @@ exports.config = {
   onPrepare: function() {
     browser.ignoreSynchronization = true;
     browser.manage().window().maximize();
-    global.expect = chai.expect;
+    require('babel-register');
     Reporter.createDirectory(jsonReports);
   },
   cucumberOpts: {
