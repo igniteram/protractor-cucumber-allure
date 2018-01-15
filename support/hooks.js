@@ -1,5 +1,5 @@
 "use strict";
-const Cucumber = require("cucumber");
+
 const { BeforeAll, After, Status } = require("cucumber");
 const conf = require("../config/config").config;
 
